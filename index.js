@@ -79,7 +79,7 @@ app.post('/message', function (req, res) {
 
   console.log('HAHAHAHAHHAHAA');
 
-  console.log(req.body, req.params);
+  console.log(arguments);
 
   msg.save();
 
