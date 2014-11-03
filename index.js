@@ -46,7 +46,7 @@ app.get('/', function(req, res) {
 
   msg.save()
 
-  response.send('Hello World!');
+  res.send('Hello World!');
 
 	//Send an SMS text message
 	/*client.sendMessage({
