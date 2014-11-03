@@ -74,10 +74,14 @@ app.get('/', function(req, res) {
 app.post('/message', function (req, res) {
 
   var msg = new Message({
-  	text: JSON.stringify(req.body)
+  	text: 'text received'
   });
 
-  msg.save()
+  console.log('HAHAHAHAHHAHAA');
+
+  console.log(req, req.body);
+
+  msg.save();
 
   // send the xml crap
 });
