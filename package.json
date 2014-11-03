@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/taylorcode/myautoapp",
   "dependencies": {
-    "express": "^4.10.1"
+    "express": "^4.10.1",
+    "twilio": "^1.7.0"
   }
 }
