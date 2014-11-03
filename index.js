@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-//bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/myauto';
 
@@ -30,8 +30,11 @@ mongoose.connect(mongoUri, function(err, db) {
 });
 
 
-//app.use(bodyParser());
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
@@ -77,9 +80,9 @@ app.post('/message', function (req, res) {
   	text: 'text received'
   });
 
-  console.log('HAHAHAHAHHAHAA');
+  console.log('RESPONSE FROM TWILIO:');
 
-  console.log(arguments);
+  console.log(req.body, req.params);
 
   msg.save();
 

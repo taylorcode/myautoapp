@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/taylorcode/myautoapp",
   "dependencies": {
+    "body-parser": "^1.9.2",
     "express": "^4.10.1",
     "mongoose": "^3.8.18",
     "twilio": "^1.7.0"
