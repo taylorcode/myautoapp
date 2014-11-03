@@ -1,0 +1,22 @@
+{
+  "name": "myautoapp",
+  "version": "0.0.0",
+  "description": "A barebones Node.js app using [Express 4](http://expressjs.com/).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorcode/myautoapp.git"
+  },
+  "author": "Taylor McIntyre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taylorcode/myautoapp/issues"
+  },
+  "homepage": "https://github.com/taylorcode/myautoapp",
+  "dependencies": {
+    "express": "^4.10.1"
+  }
+}
