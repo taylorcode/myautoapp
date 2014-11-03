@@ -74,7 +74,7 @@ app.get('/', function(req, res) {
 app.post('/message', function (req, res) {
 
   var msg = new Message({
-  	text: 'new message hit'
+  	text: JSON.stringify(req.body);
   });
 
   msg.save()
