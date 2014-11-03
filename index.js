@@ -4,14 +4,52 @@ var app = express(),
 
 var client = require('twilio')('AC3f8bb9312dc542b543b50bd06ec23dce', 'e1e8451d762b0f10c048c4b34aec0dd8');
 
+var mongo = require('mongodb');
+
+var mongoose = require('mongoose');
+
+var Schema = mongoose.Schema;
+
+//bodyParser = require('body-parser');
+
+var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/myauto';
+
+
+var MessageSchema = new Schema({
+	text: String
+});
+
+// define an Message model with this mongoose instance
+var Message = mongoose.model('Message', MessageSchema);
+
+mongoose.connect(mongoUri, function(err, db) {
+	if (err) {
+	  throw err;
+	}
+	return console.log('Successfully connected to MyAuto MongoDB.');
+});
+
+
+//app.use(bodyParser());
+
+
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(request, response) {
+app.get('/', function(req, res) {
+
+
+
+  var msg = new Message({
+  	text: 'slash / hit'
+  });
+
+  msg.save()
+
   response.send('Hello World!');
 
 	//Send an SMS text message
-	client.sendMessage({
+	/*client.sendMessage({
 
 	    to:'+19162252910', // Any number Twilio can deliver to
 	    from: '+19163475297', // A number you bought from Twilio and can use for outbound communication
@@ -29,9 +67,20 @@ app.get('/', function(request, response) {
 	        console.log(responseData.body); // outputs "word to your mother."
 
 	    }
-	});
+	});*/
 
-})
+});
+
+app.post('/message', function (req, res) {
+
+  var msg = new Message({
+  	text: 'new message hit'
+  });
+
+  msg.save()
+
+  // send the xml crap
+});
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'));

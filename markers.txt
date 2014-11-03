@@ -1,0 +1,4 @@
+TODO:
+
+Add mongo
+Get message from client to store in mongo
