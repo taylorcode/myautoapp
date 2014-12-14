@@ -2,6 +2,9 @@ var express = require('express')
 
 var app = express();
 
+var server = require('http').Server(app);
+
+/*
 var twilio = require('twilio');
 
 var client = require('twilio')('AC3f8bb9312dc542b543b50bd06ec23dce', 'e1e8451d762b0f10c048c4b34aec0dd8');
@@ -11,8 +14,6 @@ var mongo = require('mongodb');
 var bodyParser = require('body-parser');
 
 var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/myauto';
-
-var server = require('http').Server(app);
 
 var io = require('socket.io')(server);
 
@@ -54,10 +55,13 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+*/
+
 app.set('port', (process.env.PORT || 5000))
 
 app.use(express.static(__dirname + '/public'));
 
+/*
 io.on('connection', function(socket){
   console.log('a user connected');
 
@@ -82,32 +86,6 @@ io.on('connection', function(socket){
 });
 
 
-
-/* TEST MAKING REP
-var testRep = new models.Representative({
-	firstName: 'Taylor',
-	lastName: 'McIntyre',
-	phone: '+19163475297'
-});
-
-
-/// logic crap
-
-testRep.save();
-*/
-/* Test user
-var testUser = new models.User({
-	firstName: 'Taylor',
-	lastName: 'McIntyre',
-	phone: '+19162252910'
-});
-
-
-/// logic crap
-
-testUser.save();
-*/
-
 app.get('/representative/:id/messages', function (req, res, next) {
 
 	// NOTE should we check if there is a representative?
@@ -126,25 +104,6 @@ app.get('/representative/:id/messages', function (req, res, next) {
 // send a message from a user to representative (save the message)
 app.post('/messages', function (req, res) {
 
-/*
-2014-11-03T03:41:07.271656+00:00 app[web.1]: { ToCountry: 'US',
-2014-11-03T03:41:07.271674+00:00 app[web.1]:   FromCountry: 'US',
-2014-11-03T03:41:07.271676+00:00 app[web.1]:   To: '+19163475297',
-2014-11-03T03:41:07.271677+00:00 app[web.1]:   ToZip: '',
-2014-11-03T03:41:07.271679+00:00 app[web.1]:   MessageSid: 'SM4d717dbc058687a3759486409f7686c5',
-2014-11-03T03:41:07.271680+00:00 app[web.1]:   AccountSid: 'AC3f8bb9312dc542b543b50bd06ec23dce',
-2014-11-03T03:41:07.271681+00:00 app[web.1]:   From: '+19162252910',
-2014-11-03T03:41:07.271683+00:00 app[web.1]:   ApiVersion: '2010-04-01' } {}
-2014-11-03T03:41:07.271661+00:00 app[web.1]:   SmsMessageSid: 'SM4d717dbc058687a3759486409f7686c5',
-2014-11-03T03:41:07.271659+00:00 app[web.1]:   ToState: 'CA',
-2014-11-03T03:41:07.271662+00:00 app[web.1]:   NumMedia: '0',
-2014-11-03T03:41:07.271664+00:00 app[web.1]:   ToCity: '',
-2014-11-03T03:41:07.271665+00:00 app[web.1]:   FromZip: '95628',
-2014-11-03T03:41:07.271667+00:00 app[web.1]:   SmsSid: 'SM4d717dbc058687a3759486409f7686c5',
-2014-11-03T03:41:07.271670+00:00 app[web.1]:   SmsStatus: 'received',
-2014-11-03T03:41:07.271672+00:00 app[web.1]:   FromCity: 'FAIR OAKS',
-2014-11-03T03:41:07.271673+00:00 app[web.1]:   Body: 'Ugh'
-*/
 
   console.log('RESPONSE FROM TWILIO:');
 
@@ -260,9 +219,10 @@ app.post('/messages/user', function (req, res, next) {
 	});
 
 });
+*/
 
-server.listen(3000, function(){
-  console.log('listening on *:3000');
+server.listen(app.get('port'), function(){
+	console.log("Node app is running at localhost:" + app.get('port'));
 });
 
 // app.listen(app.get('port'), function() {
