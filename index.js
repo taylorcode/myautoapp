@@ -4,7 +4,6 @@ var app = express();
 
 var server = require('http').Server(app);
 
-/*
 var twilio = require('twilio');
 
 var client = require('twilio')('AC3f8bb9312dc542b543b50bd06ec23dce', 'e1e8451d762b0f10c048c4b34aec0dd8');
@@ -55,7 +54,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-*/
 
 app.set('port', (process.env.PORT || 5000))
 
