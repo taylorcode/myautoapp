@@ -213,7 +213,7 @@ app.post('/messages/user', function (req, res, next) {
 			// crate the message, have an API for sending a created message (maybe a method of the message schema)
 
 		  	// representative found, valid message, store it
-		  	var newMessage = new Message({
+		  	var newMessage = new models.Message({
 		  		text: data.text,
 		  		_user: user._id,
 		  		_representative: rep._id
